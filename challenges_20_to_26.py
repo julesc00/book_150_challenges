@@ -48,10 +48,58 @@ def ask_for_rhyme_display_indices():
     rhyme = input("Enter your favorite nursery rhyme: ")
     num1 = int(input(f"Enter a starting number from 1 to {len(rhyme)}: "))
     num2 = int(input("Enter an ending number: "))
-    section = rhyme[num1+1:num2]
+    section = rhyme[num1 + 1:num2]
 
     return section
 
 
+def to_all_caps():
+    """
+    024
+    Ask the user to type in any word and display it in upper case.
+    """
+    any_str = input("Enter whatever: ").upper()
+    return any_str
+
+
+def first_name_check():
+    """
+    025
+    Ask the user to enter their first name. If the length of their first
+    name is under five characters, ask  them to enter their surname and
+    join them together (without a space) and display the name in upper case.
+    If the length of the first name is five or more characters, display
+    their first name in lower case.
+    """
+    name_list = []
+    first_name = input("Enter your first name: ")
+    if len(first_name) >= 5:
+        last_name = input("Enter your last name: ")
+        name_list.append(first_name)
+        name_list.append(last_name)
+        full_name = "".join(name_list)
+
+        return full_name.upper()
+    else:
+        return first_name.lower()
+
+
+def pig_latin():
+    """
+    026
+    Pig Latin takes the first consonant of a word, moves it to the end of the word and adds on an “ay”.
+    If a word begins with a vowel you just add “way” to the end. For example, pig becomes igpay, banana becomes
+    ananabay, and aadvark becomes aadvarkway. Create a program that will ask the user to enter a word and change it
+    into Pig Latin. Make sure the new word is displayed in lower case.
+    """
+    word = input("Enter a word: ").lower()
+    vowels = "aeiou"
+    if word[0] in vowels:
+        return word + "way"
+    else:
+        char2, temp_word = word[0], word[1:]
+        return temp_word + char2 + "ay"
+
+
 if __name__ == "__main__":
-    print(ask_for_rhyme_display_indices())
+    print(pig_latin())
