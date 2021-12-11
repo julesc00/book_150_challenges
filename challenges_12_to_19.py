@@ -97,7 +97,7 @@ def display_fav_color():
     “I don’t like [colour], I prefer red”.
     """
     fav_color = input("Enter your favorite color: ").lower()
-    if fav_color == "red":
+    if fav_color == "red" or fav_color == "RED" or fav_color == "Red":
         print("I like red too.")
     else:
         print(f"I don't like {fav_color}, I prefer red.")
