@@ -154,7 +154,7 @@ def party_invite():
                     guests_total -= 1
                 elif not guests_total:
                     print("Finished registering guests.")
-                    guests_str = ", ".join([name for name in guests_list])
+                    guests_str = ", ".join(guests_list)
                     print(f"The guests for your party are: {guests_str}.")
                     guests_trigger = True
                     main_trigger = True
