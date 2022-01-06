@@ -156,5 +156,48 @@ def edit_party_guests_list():
     return users
 
 
+def show_tv_shows():
+    """
+    078
+    Create a list containing the titles of four TV programmes and display them on separate lines. Ask the
+    user to enter another show and a position they want it inserted into the list. Display the list again,
+    showing all five TV programmes in their new positions.
+    """
+    tv_shows = ["Show1", "Show2", "Show3", "Show4"]
+    for idx, show in enumerate(tv_shows):
+        print(f"{idx}. {show}")
+    user_show = input("Enter another show: ").title()
+    idx = int(input("In what index do you want this show?: "))
+    tv_shows.insert(idx, user_show)
+    for idx, show in enumerate(tv_shows):
+        print(f"{idx}. {show}")
+    return ""
+
+
+def list_nums():
+    """
+    079
+    Create an empty list called “nums”. Ask the user to enter numbers. After each number is entered, add
+    it to the end of the nums list and display the list. Once they have entered three numbers, ask them if
+    they still want the last number they entered saved. If they say “no”, remove the last item from the list.
+    Display the list of numbers.
+    """
+    print("Enter at least 3 numbers.")
+    counter, nums = 3, []
+
+    while counter:
+        num = int(input("Enter a number: "))
+        nums.append(num)
+        counter -= 1
+        print(f"This is your list of numbers: {nums}")
+
+    last = input("Do you still want the last entered number? 'yes' or 'no': ").lower()
+    if last != "no":
+        return nums
+
+    nums.pop()
+    return nums
+
+
 if __name__ == "__main__":
-    print(edit_party_guests_list())
+    print(list_nums())
