@@ -113,5 +113,43 @@ def choose_rand_num2():
     return ""
 
 
+def random_math_quiz() -> str:
+    """
+    058
+    Make a maths quiz that asks five questions by randomly generating two whole numbers to make the question
+    (e.g. [num1] + [num2]). Ask the user to enter the answer. If they get it right add a point to their score. At
+    the end of the quiz, tell them how many they got correct out of five.
+    """
+    trigger, score = 5, 0
+    while trigger:
+        n1, n2 = int(random.choice(range(1, 1000))), int(random.choice(range(1, 1000)))
+        result = n1 + n2
+        user_answer = int(input(f"[{n1}] + [{n2}]: "))
+        if user_answer and user_answer == result:
+            score += 1
+        trigger -= 1
+
+    return f"Your score {score}"
+
+
+def choose_color() -> str:
+    """
+    059
+    Display five colours and ask the user to pick one. If they
+    pick the same as the program has chosen, say “Well done”, otherwise display a witty answer which involves
+    the correct colour, e.g. “I bet you are GREEN with envy” or “You are probably feeling BLUE right now”. Ask
+    them to guess again; if they have still not got it right, keep giving them the same clue and ask the user to
+    enter a colour until they guess it correctly.
+    """
+    colors = ("RED", "BLUE", "GREEN", "PINK", "ORANGE")
+    user_pick, computer_pick = "", random.choice(colors)
+    while user_pick != computer_pick:
+        user_pick = input(f"Choose a color: {', '.join(colors)} ").upper()
+        computer_pick = random.choice(colors)
+        print(f"You're feeling {computer_pick}") if user_pick != computer_pick else ""
+
+    return "you got it!"
+
+
 if __name__ == "__main__":
-    print(choose_rand_num2())
+    print(choose_color())
