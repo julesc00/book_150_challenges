@@ -93,10 +93,11 @@ def joined_arrays():
 
 def show_nums_to_user():
     """
+    093
     Ask the user to enter five numbers. Sort them into order and present them to the user.
     Ask them to select one of the numbers. Remove it from the original array and save it in a
     new array.
-    :return: new array with one item.
+    :return: new array with one (popped) item.
     """
     arr, trigger = [], 5
     while trigger:
@@ -116,5 +117,24 @@ def show_nums_to_user():
     return new_array
 
 
+def show_selected_number():
+    """
+    094
+    Display an array of five numbers. Ask the user to select one of the numbers.
+    Once they have selected a number, display the position of that item in the array. If they enter
+    something that is not in the array, ask them to try again until they select a relevant item.
+    :return: display index of selected number.
+    """
+    arr, trigger, idx = array("i", [33, 7, 40, 50, 12]), True, 0
+    selected = int(input(f"Choose a number from the array: {arr} "))
+    while trigger:
+        if selected in arr:
+            trigger = False
+            return f"Your selection is in index {arr.index(selected)}"
+        else:
+            print("Not in array")
+            selected = int(input(f"Choose a number from the array: {arr} "))
+
+
 if __name__ == "__main__":
-    print(show_nums_to_user())
+    print(show_selected_number())
