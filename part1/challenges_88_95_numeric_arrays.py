@@ -136,5 +136,29 @@ def show_selected_number():
             selected = int(input(f"Choose a number from the array: {arr} "))
 
 
+def show_division():
+    """
+    095
+    Create an array of five numbers between 10 and 100 which each have two decimal places. Ask the user to
+    enter a whole number between 2 and 5. If they enter something outside of that range, display a suitable
+    error message and ask them to try again until they enter a valid amount. Divide each of the
+    numbers in the array by the number the user entered and display the answers shown to two decimal places.
+    :return: show divided numbers.
+    """
+
+    float_arr, trigger = array("f"), False
+    for _ in range(1, 5+1):
+        float_arr.append(random.uniform(10.0, 100.0))
+    user_num = int(input("Enter a number from 2 to 5: "))
+    while not trigger:
+        if 1 < user_num and user_num > 5:
+            user_num = int(input("Enter a number from 2 to 5: "))
+        else:
+            for i in float_arr:
+                print(f"{i} / {user_num} = {round(i / user_num, 2)}")
+            trigger = True
+        return ""
+
+
 if __name__ == "__main__":
-    print(show_selected_number())
+    print(show_division())
