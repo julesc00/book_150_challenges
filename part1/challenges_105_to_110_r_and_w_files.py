@@ -114,5 +114,29 @@ def show_school_menu():
     return ""
 
 
+def display_edit_subjects():
+    """
+    110
+    Using the Names.txt file you created earlier, display the list of names in Python. Ask the user to type in one
+    of the names and then save all the names except the one they entered into a new file called Names2.txt.
+    :return:
+    """
+
+    with open("docs/names.txt", "r") as f:
+        names = f.read().split("\n")
+    print(names)
+
+    sel = input("Type one of the displayed names: ").title()
+    while sel not in names:
+        print(names)
+        sel = input("Type one of the displayed names: ").title()
+    else:
+        names.pop(names.index(sel))
+
+        with open("docs/names.txt", "w") as f:
+            f.write("\n".join(names))
+    return ""
+
+
 if __name__ == "__main__":
-    print(show_school_menu())
+    print(display_edit_subjects())
