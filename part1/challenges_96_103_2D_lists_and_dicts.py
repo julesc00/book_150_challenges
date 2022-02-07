@@ -14,6 +14,7 @@
 # for i in data_set:
 #     print(data_set[i]["y"])
 import pandas as pd
+from copy import deepcopy
 
 
 def two_d_list(my_list: list) -> list:
@@ -99,6 +100,129 @@ def edit_row_col_value(my_list: list) -> list:
     return lst[row]
 
 
+def show_sales(ds: dict) -> str:
+    """
+    100 and 101
+    Create the following using a 2D dictionary showing the sales each person has made in the different
+    geographical regions:
+    :param ds:
+    :return: print data frame table
+    """
+    for row, col in ds.items():
+        print(f"{row} {col}")
+
+    row = input("Enter name to change: ").title()
+    col = input("Enter column letter: ").upper()
+    temp_vals = input("Enter sales number to change: ")
+    vals = [int(val) for val in temp_vals]
+    ds[row][col] = vals
+    for row, col in ds.items():
+        print(f"{row} {col}")
+
+    return ""
+
+
+def show_user_details():
+    """
+    102
+    Ask the user to enter the name, age and shoe size for four people. Ask for the name of one of the people in
+    the list and display their age and shoe size.
+    :return:
+    """
+    users, counter = {}, 4
+    while counter:
+        name = input(f"{counter} to go; Enter user name: ").title()
+        age = int(input("Enter user's age: "))
+        shoe_size = float(input("Enter show size: "))
+        users[name] = {
+            "age": age,
+            "show_size": shoe_size
+        }
+        counter -= 1
+    ask_name = input("Enter a name: ").title()
+    return users.get(ask_name, "")
+
+
+def show_user_details2():
+    """
+    103
+    Adapt program 102 to display the names and ages of all the people in the list but do not show their shoe
+    size.
+    :return: user details without shoe size
+    """
+
+    users, counter = {}, 4
+    while counter:
+        name = input(f"{counter} to go; Enter user name: ").title()
+        age = int(input("Enter user's age: "))
+        shoe_size = float(input("Enter show size: "))
+        users[name] = {
+            "age": age,
+            "show_size": shoe_size
+        }
+        counter -= 1
+
+    for name in users:
+        print(name, users[name]["age"])
+    return ""
+
+
+def remove_user():
+    """
+    014
+    After gathering the four names, ages and shoe sizes, ask the user to enter the name of the person they want
+    to remove from the list. Delete this row from the data and display the other rows on separate lines.
+    :return: Print remaining rows, print None.
+    """
+    users, counter = {}, 4
+    while counter:
+        name = input(f"{counter} to go; Enter user name: ").title()
+        age = int(input("Enter user age: "))
+        shoe_size = float(input("Enter user shoe size: "))
+        users[name] = {"age": age, "shoe_size": shoe_size}
+        counter -= 1
+
+    rm_user = input("Enter user name to remove: ").title()
+    # users.pop(rm_user)
+    del users[rm_user]  # Different way to remove an item.
+    [print(f"{name}, {users[name]['age']}, {users[name]['shoe_size']}") for name in users]
+
+    return ""
+
+
 if __name__ == "__main__":
     LST = [[2, 5, 8], [3, 7, 4], [1, 6, 9], [4, 2, 0]]
-    print(edit_row_col_value(LST))
+    LST2 = [
+        [[3, 0, 5, 6], [8, 4, 6, 3], [8, 4, 4, 1], [2, 6, 9, 4]],
+        [[4, 8, 3, 2], [6, 7, 8, 6], [4, 7, 3, 7], [3, 6, 1, 2]],
+        [[5, 2, 3, 9], [4, 8, 0, 2], [5, 8, 2, 0], [1, 8, 5, 9]],
+        [[3, 9, 0, 4], [3, 6, 4, 5], [8, 8, 2, 1], [2, 4, 5, 1]]
+    ]
+    DATA_SET = {
+        "John": {
+            "N": [3, 0, 5, 6],
+            "S": [8, 4, 6, 3],
+            "E": [8, 4, 4, 1],
+            "W": [2, 6, 9, 4]
+        },
+        "Tom": {
+            "N": [4, 8, 3, 2],
+            "S": [6, 7, 8, 6],
+            "E": [4, 7, 3, 7],
+            "W": [2, 6, 9, 4]
+        },
+        "Anne": {
+            "N": [5, 2, 3, 9],
+            "S": [4, 8, 0, 2],
+            "E": [5, 8, 2, 0],
+            "W": [1, 8, 5, 9]
+        },
+        "Fiona": {
+            "N": [3, 9, 0, 4],
+            "S": [3, 6, 4, 5],
+            "E": [8, 8, 2, 1],
+            "W": [2, 4, 5, 1]
+        }
+    }
+
+    print(remove_user())
