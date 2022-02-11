@@ -77,7 +77,7 @@ def add_num_records():
         print("Choose an author")
     else:
         # NOTE: My loop doesn't work if I simplify it by breaking out of the if else statement
-        for book in books:
+        for book in str(books):
             if author == book[1].strip():
                 print(book)
             else:
