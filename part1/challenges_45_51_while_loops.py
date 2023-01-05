@@ -65,7 +65,7 @@ def guest_invite_checker() -> str:
     guests.append(name)
     print(f"{name} a été invité.")
     while not trigger:
-        invite = input(f"Vous aimeriez inviter quelqu'une plus? ").lower()
+        invite = input(f"Vous aimeriez inviter quelqu'un plus? ").lower()
         if invite == "oui":
             name2 = input("Comment ce-que s'appelle votre invité? ").title()
             guests.append(name2)

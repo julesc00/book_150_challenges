@@ -44,9 +44,12 @@ def display_names():
     Open the names.txt file and display the data in Python.
     :return:
     """
+    names = []
     with open("docs/names.txt", "r") as f:
         print(f.read())
-    return ""
+        for name in f.read():
+            names.append(name)
+    return names
 
 
 def edit_names():
@@ -139,4 +142,4 @@ def display_edit_subjects():
 
 
 if __name__ == "__main__":
-    print(display_edit_subjects())
+    print(display_names())
